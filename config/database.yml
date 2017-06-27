@@ -81,6 +81,14 @@ test:
 #
 production:
   <<: *default
+<<<<<<< HEAD
   database: stackoverclone_production
   # username: stackoverclone
   # password: <%= ENV['STACKOVERCLONE_DATABASE_PASSWORD'] %>
+||||||| merged common ancestors
+  database: db/production.sqlite3
+=======
+  database: stackoverclone_production
+  username: stackoverclone
+  password: <%= ENV['STACKOVERCLONE_DATABASE_PASSWORD'] %>
+>>>>>>> af52238ff811050fcc8fc2e8b40b8f84875af32b
