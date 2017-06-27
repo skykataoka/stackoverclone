@@ -46,7 +46,6 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-<<<<<<< HEAD
 
   # デバッガー
   gem 'pry-rails'
@@ -54,9 +53,3 @@ group :development do
   gem 'binding_of_caller'
   gem 'letter_opener_web'
 end
-||||||| merged common ancestors
-end
-
-=======
-end
->>>>>>> af52238ff811050fcc8fc2e8b40b8f84875af32b
