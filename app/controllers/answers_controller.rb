@@ -1,15 +1,16 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:edit, :update, :destroy]
 
-  def create
-   @answer = Answer.new(answer_params)
+   #回答を保存、投稿するためのアクションです。
+   def create
+     #質問と紐付ける
+     @answer = answers.build(answer_params)
+     @question = @answer.question
+    
     if @answer.save
-     redirect_to new_answer_path, notice: "投稿しました"
-    else
-     render 'index'
-    end
- end
-
+      render :index
+     end
+   end
 
 
   def edit
@@ -22,6 +23,9 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     redirect_to answer_path
+  end
+
+  def show
   end
 
 
