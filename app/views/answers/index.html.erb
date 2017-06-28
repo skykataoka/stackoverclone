@@ -1,0 +1,9 @@
+<h1>answer一覧</h1>
+<% @answers.each do |answer| %>
+<p>内容<%= answer.content %></p>
+<p><%= link_to '編集', edit_answer_path(answer) %></p>
+<p><%= link_to '削除', answer, method: :delete, data: { confirm: '削除しますか?' } %></p>
+<% end %>
+
+<%= link_to "answer一覧画面にもどる", answers_path %>
+<%= link_to "作成", new_answer_path %>
