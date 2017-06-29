@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'answers/index'
+   get 'answers/index'
 
   devise_for :users
 
@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers
   end
+
+  # タグ一覧
+  resources :tags, only: [:index]
 
   root 'top#index'
 
