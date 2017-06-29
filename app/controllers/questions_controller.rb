@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
+  #ログインしていなければblogを使用できないようにする(Deviseのauthenticate_user!メソッドを使用)
+  before_action :authenticate_user!
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-
   # GET /questions
   # GET /questions.json
   def index
@@ -22,7 +23,10 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
+    # 質問内容を作成
     @question = Question.new(question_params)
+    #user_idをカラムに代入する(current_userメソッドを使用する)
+    @question.user_id = current_user.id
 
     respond_to do |format|
       if @question.save
@@ -71,6 +75,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:title)
+      params.require(:question).permit(:title, :content)
     end
 end
