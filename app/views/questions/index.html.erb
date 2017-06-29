@@ -1,17 +1,24 @@
 
 <p class="flash"><%= notice %><%= alert %></p>
-<h1>全ての質問</h1>
 
-  <%= link_to '新しい質問を投稿', new_question_path %>
-
-
-  <% @questions.each do |question| %>
-
-          <p>タイトル<%= link_to question.title, question %></p>
-          <p>内容<%= question.content %></p>
-          <%= link_to '詳細へ', question %>
+<div class="index_main">
+  <%= button_to '質問する', new_question_path, :class => "btn btn-primary index_main_button", method: :get %>
+  <div class="index_main_question">
+  <h1>質問をみる</h1>
+    <br/>
+    <% @questions.each do |question| %>
+      <div class="index_main_question_block">
+          <span class="glyphicon glyphicon-arrow-up">投票上ボタン</span>
+          <br/>
+          <span class="glyphicon glyphicon-arrow-down">投票下ボタン
+            <p class="index_main_question_block_content"><%= link_to question.title, question %></p>
+          </span>
           <!-- 作成者の質問の編集と破棄が可能　-->
-          <% question.user.id == current_user.id %>
-          <%= link_to 'Edit', edit_question_path(question) %>
-            <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
+          <% if question.user_id == current_user.id %>
+            <p class="clear"><%= link_to 'Edit', edit_question_path(question) %></p>
+            <p class="clear"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  #ログインしていなければAnswerを使用できないようにする(Deviseのauthenticate_user!メソッドを使用)
+  before_action :authenticate_user!
   before_action :set_answer, only: [:edit, :update, :destroy]
 
    #回答を保存、投稿するためのアクションです。

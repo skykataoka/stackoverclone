@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  # ユーザー情報のルーティング
+  resources :users, only:[:index, :show]
+
   #特定の質問に対して回答する
   resources :questions do
     resources :answers

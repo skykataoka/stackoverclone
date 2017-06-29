@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
-  #ログインしていなければblogを使用できないようにする(Deviseのauthenticate_user!メソッドを使用)
-  before_action :authenticate_user!
+  #ログインしていなければquestionを使用できないようにする(Deviseのauthenticate_user!メソッドを使用)
+  # before_action :authenticate_user!
+  
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   # GET /questions
   # GET /questions.json
