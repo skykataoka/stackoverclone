@@ -1,27 +1,16 @@
-<p id="notice"><%= notice %></p>
 
-<h1>質問一覧</h1>
+<p class="flash"><%= notice %><%= alert %></p>
+<h1>全ての質問</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>質問内容</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <%= link_to '新しい質問を投稿', new_question_path %>
 
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @questions.each do |question| %>
 
-<br>
-
-<%= link_to 'New Question', new_question_path %>
+          <p>タイトル<%= link_to question.title, question %></p>
+          <p>内容<%= question.content %></p>
+          <%= link_to '詳細へ', question %>
+          <!-- 作成者の質問の編集と破棄が可能　-->
+          <% question.user.id == current_user.id %>
+          <%= link_to 'Edit', edit_question_path(question) %>
+            <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>

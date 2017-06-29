@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :questions
 
+  root 'questions#index'
 
   # letter_openerのルーティング
   if Rails.env.development?
