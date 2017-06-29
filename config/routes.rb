@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :questions
+  get 'answers/index'
 
-  root 'questions#index'
+  devise_for :users
+
+  #特定の質問に対して回答する
+  resources :questions do
+    resources :answers
+  end
+
+  root 'top#index'
 
   # letter_openerのルーティング
   if Rails.env.development?

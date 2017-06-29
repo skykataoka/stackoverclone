@@ -10,8 +10,6 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   # GET /questions/1.json
-  def show
-  end
 
   # GET /questions/new
   def new
@@ -55,6 +53,7 @@ class QuestionsController < ApplicationController
     end
   end
 
+
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
@@ -63,6 +62,9 @@ class QuestionsController < ApplicationController
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def show
   end
 
   private

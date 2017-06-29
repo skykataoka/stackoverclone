@@ -4,6 +4,7 @@
 
   <%= link_to '新しい質問を投稿', new_question_path %>
 
+
   <% @questions.each do |question| %>
 
           <p>タイトル<%= link_to question.title, question %></p>
