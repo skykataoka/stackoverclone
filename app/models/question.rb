@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   has_many :favorites
 
+  
   #バリデーション
  validates :title, presence: true
 
