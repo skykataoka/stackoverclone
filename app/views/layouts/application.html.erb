@@ -7,8 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div>
+     <nav class="navbar navbar-default navigation-clean">
+         <div class="container">
+             <div class="navbar-header"><%= link_to "ホーム", root_path %>
+                 <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+             </div>
+             <div class="collapse navbar-collapse" id="navcol-1">
+                 <ul class="nav navbar-nav navbar-right">
+                     <li role="presentation" class="active"><%= link_to "質問", questions_path %></li>
+                     <li role="presentation"><a href="#">タグ</a></li>
+                     <li role="presentation"><a href="#">ユーザー</a></li>
+                     <li class="dropdown"><a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle">マイページ <span class="caret"></span></a>
+                         <ul role="menu" class="dropdown-menu">
+                             <li role="presentation"><a href="#">マイページ</a></li>
+                             <li role="presentation"><a href="#">Second Item</a></li>
+                             <li role="presentation"><a href="#">Third Item</a></li>
+                         </ul>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+ </div>
 
 <%= yield %>
-
+<footer>
+   <p class="text-center">Copyright dive23チーム開発案件</p>
+ </footer>
 </body>
 </html>
