@@ -2,15 +2,18 @@ class AnswersController < ApplicationController
   before_action :set_answer, only: [:edit, :update, :destroy]
 
    #回答を保存、投稿するためのアクションです。
-   def create
+  def create
      #質問と紐付ける
-     @answer = answers.build(answer_params)
+     @answer = current_user.answers.build(answer_params)
      @question = @answer.question
-    
+     # クライアント要求に応じてフォーマットを変更
+     respond_to do |format|
+
     if @answer.save
-      render :index
+      format.html { render :new }
      end
    end
+ end
 
 
   def edit

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   #特定の質問に対して回答する
   resources :questions do
     resources :answers
-    post :confirm, on: :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
