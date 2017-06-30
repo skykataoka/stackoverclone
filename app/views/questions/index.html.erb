@@ -12,6 +12,11 @@
           <br/>
           <span class="glyphicon glyphicon-arrow-down">投票下ボタン
             <p class="index_main_question_block_content"><%= link_to question.title, question %></p>
+            <div class="tag_area" >
+              <% question.tag_list.each do |tag| %>
+                <span class="label label-info"><%= tag %></span>
+              <% end %>
+            </div>
           </span>
           <!-- 作成者の質問の編集と破棄が可能　-->
           <% if question.user_id == current_user.id %>

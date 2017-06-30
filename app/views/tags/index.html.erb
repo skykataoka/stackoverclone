@@ -1,6 +1,8 @@
-<h1>Tag一覧</h1>
-<div class="tag_list">
-  <% @tags.each do |tag| %>
-    <p><%= tag.name %> </p>
-  <% end %>
+<div class="container">
+  <h1>Tag一覧</h1>
+  <div class="tag_list">
+    <% @tags.each do |tag| %>
+      <span class="tag"><%= link_to tag.name,questions_path(tags: tag.name), class: "label label-info" %> </span>
+    <% end %>
+  </div>
 </div>
