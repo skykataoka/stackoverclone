@@ -3,10 +3,16 @@ class AnswersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_answer, only: [:edit, :update, :destroy]
 
+  def new
+    @answer = Answer.new
+  end
+
    #回答を保存、投稿するためのアクションです。
   def create
+    # binding.pry
+    # @answer = Answer.new(answer_params)
      #質問と紐付ける
-     @answer = current_user.answers.build(answer_params)
+    @answer = current_user.answers.build
      @question = @answer.question
      # クライアント要求に応じてフォーマットを変更
      respond_to do |format|
@@ -36,7 +42,7 @@ class AnswersController < ApplicationController
 
   private
     def answer_params
-      params.require(:answer).permit(:question_id, :content)
+      params.require(:answer).permit(:content)
     end
 
     def set_answer

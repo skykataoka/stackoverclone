@@ -1,7 +1,9 @@
-<%= form_for([question,answer]) do |f| %>
-  <%= f.hidden_field :question_id %>
+<h2>回答する</h2>
+<!-- answersコントローラーのcrateアクションを実行-->
+<%= form_for(@answer,:url => {:controller => :answers, :action => :create}) do |f| %>
+  <%#= f.hidden_field :question_id %>
   <div class="field">
-    <%= f.text_field :content, placeholder: "内容", class: "form-control"  %>
+    <%= f.text_area :content, placeholder: "内容", :size => "100x10", class: "form-control"  %>
   </div>
   <div class="actions">
     <%= f.submit class: 'btn btn-primary btn-block'%>

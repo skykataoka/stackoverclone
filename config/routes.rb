@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   #特定の質問に対して回答する
   resources :questions do
-    resources :answers
+    collection do
+      resources :answers
+    end
   end
 
   # タグ一覧
