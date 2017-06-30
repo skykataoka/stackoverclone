@@ -16,6 +16,11 @@
           <span class="glyphicon glyphicon-arrow-down">投票下ボタン
             <p class="index_main_question_block_content"><%= @question.content %>
           </span>
+          <div class="tag_area">
+            <% @question.tag_list.each do |tag| %>
+              <span class="label label-info"><%= tag %></span>
+            <% end %>
+          </div>
             <p> <%= @question.user.name %>さん</p>
           <!-- <%#= link_to '詳細へ', question %> -->
           <!-- 作成者の質問の編集と破棄が可能　-->
