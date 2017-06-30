@@ -28,7 +28,10 @@
 
 <!-- @answerを取得する　アプリケーションヘルパーを活用-->
 <%# instance_get %>
-<h2><%= "ここに回答一覧を表示します"%></h2>
+<h2>回答一覧</h2>
+  <% @answers.each do |answer| %>
     <%#=@quesion.answer %>
+    <p><%= answer.content%></p>
+  <% end %>
 <br>
 <%= render partial:'answers/form', locals: {question: @question, answer: @answer} %>

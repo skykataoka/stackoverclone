@@ -1,7 +1,8 @@
 <h2>回答する</h2>
 <!-- answersコントローラーのcreateアクションを実行-->
-<%= form_for([answer,question]) do |f| %>
-  <%#= f.hidden_field :answer.question_id %>
+<%= form_for([question,answer]) do |f| %>
+    <!-- answerテーブルのquestion_idを取得-->
+   <%= f.hidden_field :question_id %>
   <div class="field">
     <%= f.text_area :content, placeholder: "内容", :size => "100x10", class: "form-control"  %>
   </div>

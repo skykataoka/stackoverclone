@@ -9,14 +9,10 @@ class AnswersController < ApplicationController
 
    #回答を保存、投稿するためのアクションです。
   def create
-    # binding.pry
      #質問と紐付ける
-     answers_params = params.require(:answer).permit(:content)
-     @answer = current_user.answers.build(answers_params)
+     @answer = current_user.answers.build(answer_params)
+    #  binding.pry
      @question = @answer.question
-
-    #  question_idの書き込み
-    #  @question.question_id = @question.id
 
      # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
@@ -24,7 +20,6 @@ class AnswersController < ApplicationController
         format.html { redirect_to question_path(@question), notice: 'コメントを投稿しました。' }
         # format.html { render :new }
       end
-
     end
  end
 
@@ -47,7 +42,7 @@ class AnswersController < ApplicationController
 
   private
     def answer_params
-      params.require(:answer).permit(:content)
+      params.require(:answer).permit(:content,:question_id)
     end
 
     def set_answer
