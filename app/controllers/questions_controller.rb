@@ -6,7 +6,11 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    if params['tags'].blank?
+      @questions = Question.all
+    else
+      @questions = Question.tagged_with(params['tags'])
+    end
   end
 
   # GET /questions/1
