@@ -4,10 +4,10 @@
   <title>Stackoverclone</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- スマホやタブレットで崩れないようにするために書く-->
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <header>
    <div>
      <nav class="navbar navbar-default navigation-clean">
@@ -18,15 +18,21 @@
              <div class="collapse navbar-collapse" id="navcol-1">
                  <ul class="nav navbar-nav navbar-right">
                      <li role="presentation" class="active"><%= link_to "質問", questions_path %></li>
-                     <li role="presentation"><%= link_to "タグ一覧", tags_path %></li>
+                     <li role="presentation"><a href="#">ここにタグ一覧のリンクを入れてください</a></li>
                      <li role="presentation"><a href="#">ここにユーザー一覧のリンクを入れてください</a></li>
-                     <li class="dropdown"><a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle">マイページ <span class="caret"></span></a>
-                         <ul role="menu" class="dropdown-menu">
-                             <li role="presentation"><a href="#">マイページ</a></li>
-                             <li role="presentation"><a href="#">Second Item</a></li>
-                             <li role="presentation"><a href="#">Third Item</a></li>
-                         </ul>
-                     </li>
+                      <% if user_signed_in? %>
+                        <li role="presentation"><%= link_to "ユーザ一覧", users_path %> </li>
+                        <li class="dropdown"><a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle">マイページ <span class="caret"></span></a>
+                           <ul role="menu" class="dropdown-menu">
+                               <li role="presentation"><%= link_to "マイページ", user_path(current_user.id)%></li>
+                               <li role="presentation"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                               <li role="presentation"><a href="#">Third Item</a></li>
+                           </ul>
+                        </li>
+                      <% else %>
+                             <li role="presentation"><%= link_to "ログイン",new_user_session_path %></li>
+                             <li role="presentation"><%= button_to "登録", new_user_registration_path, :class=>'btn btn-primary' %></li>
+                      <% end %>
                  </ul>
              </div>
          </div>

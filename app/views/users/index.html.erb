@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>ユーザ一覧</h2>
+  <% @users.each do |user| %>
+      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+        <!-- <%#= profile_img(user) %> -->
+        <%= link_to user_path(user) do %>
+          <h4>ユーザー名：<strong><%= user.email%></strong></h4>
+        <% end %>
+        <p>email:<%= user.email %></p>
+      </div>
+  <% end %>
+</div>
