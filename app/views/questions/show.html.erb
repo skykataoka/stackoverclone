@@ -16,6 +16,7 @@
           <span class="glyphicon glyphicon-arrow-down">投票下ボタン
             <p class="index_main_question_block_content"><%= @question.content %>
           </span>
+            <p> <%= @question.user.name %>さん</p>
           <!-- <%#= link_to '詳細へ', question %> -->
           <!-- 作成者の質問の編集と破棄が可能　-->
           <% if @question.user_id == current_user.id %>
@@ -30,8 +31,10 @@
 <%# instance_get %>
 <h2>回答一覧</h2>
   <% @answers.each do |answer| %>
-    <%#=@quesion.answer %>
-    <p><%= answer.content%></p>
+   <% unless answer.id.nil? %>
+      <p>回答内容：<%= answer.content%></p>
+      <p>回答者：<%= answer.user.name %>さん</p>
+   <% end %>
   <% end %>
 <br>
 <%= render partial:'answers/form', locals: {question: @question, answer: @answer} %>
