@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
   #ログインしていなければquestionを使用できないようにする(Deviseのauthenticate_user!メソッドを使用)
   # before_action :authenticate_user!
-  
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   # GET /questions
   # GET /questions.json
@@ -65,7 +64,10 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # 回答の入力フォームと一覧を表示するためにインスタンスを2つ生成
   def show
+    @answer = @question.answers.build
+    @answers = @question.answers
   end
 
   private
@@ -76,6 +78,7 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
+      binding.pry
       params.require(:question).permit(:title, :content)
     end
 end

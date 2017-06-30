@@ -27,7 +27,8 @@
 </div>
 
 <!-- @answerを取得する　アプリケーションヘルパーを活用-->
-<% instance_get %>
+<%# instance_get %>
 <h2><%= "ここに回答一覧を表示します"%></h2>
+    <%#=@quesion.answer %>
 <br>
-<%= render "answers/form", :locals => {question: @question, answer: @answer} %>
+<%= render partial:'answers/form', locals: {question: @question, answer: @answer} %>
