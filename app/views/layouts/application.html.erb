@@ -19,6 +19,17 @@
                  <ul class="nav navbar-nav navbar-right">
                      <li role="presentation" class="active"><%= link_to "質問", questions_path %></li>
                      <li role="presentation"><%= link_to "タグ一覧",tags_path %></li>
+                     <form class="navbar-form navbar-left" action="/questions">
+                        <div class="input-group">
+                            <div class="form-group">
+                                <!-- nameで指定した値"user_name"でcontroller側で取得出来る -->
+                                <input type="text" name="tags" class="form-control" placeholder="カンマ区切りで検索">
+                            </div>
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">検索</button>
+                            </span>
+                        </div>
+                     </form>
                      <li role="presentation"><a href="#">ここにユーザー一覧のリンクを入れてください</a></li>
                       <% if user_signed_in? %>
                         <li role="presentation"><%= link_to "ユーザ一覧", users_path %> </li>
