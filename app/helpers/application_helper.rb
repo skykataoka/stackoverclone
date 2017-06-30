@@ -6,4 +6,9 @@ module ApplicationHelper
     end
   end
 
+  # インスタンス変数渡しのメソッド
+  def instance_get
+    @answer = Question.new
+  end
+
 end

@@ -1,7 +1,10 @@
+<h2>回答する</h2>
+<!-- answersコントローラーのcreateアクションを実行-->
 <%= form_for([question,answer]) do |f| %>
-  <%= f.hidden_field :question_id %>
+    <!-- answerテーブルのquestion_idを取得-->
+   <%= f.hidden_field :question_id %>
   <div class="field">
-    <%= f.text_field :content, placeholder: "内容", class: "form-control"  %>
+    <%= f.text_area :content, placeholder: "内容", :size => "100x10", class: "form-control"  %>
   </div>
   <div class="actions">
     <%= f.submit class: 'btn btn-primary btn-block'%>

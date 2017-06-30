@@ -14,7 +14,7 @@
           <span class="glyphicon glyphicon-arrow-up">投票上ボタン</span>
           <br/>
           <span class="glyphicon glyphicon-arrow-down">投票下ボタン
-            <p class="index_main_question_block_content"><%= link_to @question.content, question_path %></p>
+            <p class="index_main_question_block_content"><%= @question.content %>
           </span>
           <!-- <%#= link_to '詳細へ', question %> -->
           <!-- 作成者の質問の編集と破棄が可能　-->
@@ -25,3 +25,13 @@
       </div>
   </div>
 </div>
+
+<!-- @answerを取得する　アプリケーションヘルパーを活用-->
+<%# instance_get %>
+<h2>回答一覧</h2>
+  <% @answers.each do |answer| %>
+    <%#=@quesion.answer %>
+    <p><%= answer.content%></p>
+  <% end %>
+<br>
+<%= render partial:'answers/form', locals: {question: @question, answer: @answer} %>
