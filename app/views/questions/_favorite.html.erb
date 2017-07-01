@@ -1,21 +1,21 @@
 <% if user_signed_in? %>
   <% if question.favorite_user(current_user.id) %>
     <%= button_to question_favorite_path(favorite, question_id: question.id), method: :delete, id: "favorite-button", remote: true do %>
-      <%= image_tag("icon_red_heart.svg") %>
+      <%= image_tag("#") %>
       <span>
         <%= question.favorite_count %>
       </span>
     <% end %>
   <% else %>
     <%= button_to question_favorites_path(question), id: "favorite-button", remote: true do %>
-      <%= image_tag("icon_heart.svg") %>
+      <%= image_tag("#") %>
       <span>
         <%= question.favorite_count %>
       </span>
     <% end %>
   <% end %>
 <% else %>
-  <% = image_tag("icon_heart.svg") %>
+  <%= image_tag("#") %>
     <span>
       <%= question.favorite_count %>
     </span>
