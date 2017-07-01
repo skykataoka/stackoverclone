@@ -3,8 +3,8 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   has_many :favorites, dependent: :destroy
   def favorite_user(user_id)
-    #検索条件を指定して、最初の1件を取得する
-   favorite.find_by(user_id: user_id)
+    #questionに紐つくfavoritesの中から検索条件を指定して、最初の1件を取得する
+   favorites.find_by(user_id: user_id)
   end
 
   # tag

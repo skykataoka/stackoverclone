@@ -3,20 +3,20 @@
     <%= button_to question_favorite_path(favorite, question_id: question.id), method: :delete, id: "favorite-button", remote: true do %>
       <%= image_tag("#") %>
       <span>
-        <%= question.favorite_count %>
+        <%= question.favorites_count %>
       </span>
     <% end %>
   <% else %>
     <%= button_to question_favorites_path(question), id: "favorite-button", remote: true do %>
       <%= image_tag("#") %>
       <span>
-        <%= question.favorite_count %>
+        <%= question.favorites_count %>
       </span>
     <% end %>
   <% end %>
 <% else %>
   <%= image_tag("#") %>
     <span>
-      <%= question.favorite_count %>
+      <%= question.favorites_count %>
     </span>
 <% end %>
