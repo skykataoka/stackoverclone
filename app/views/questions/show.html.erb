@@ -34,12 +34,6 @@
 
 <!-- @answerを取得する　アプリケーションヘルパーを活用-->
 <%# instance_get %>
-<h2>回答一覧</h2>
-  <% @answers.each do |answer| %>
-   <% unless answer.id.nil? %>
-      <p>回答内容：<%= answer.content%></p>
-      <p>回答者：<%= answer.user.name %>さん</p>
-   <% end %>
-  <% end %>
+<%= render partial:'answers/index', locals: {question: @question, answers: @answers} %>
 <br>
 <%= render partial:'answers/form', locals: {question: @question, answer: @answer} %>
