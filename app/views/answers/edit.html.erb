@@ -1,5 +1,5 @@
 <h1>answer編集</h1>
-<%= form_for(@answer) do |f| %>
+<%= form_for([@answer.question, @answer]) do |f| %>
 <div class="field">
   <%= f.label :content %><br>
   <%= f.text_field :content %>
@@ -9,4 +9,4 @@
 </div>
 <% end %>
 
-<%= link_to "answer一覧画面にもどる", answers_path %>
+<%= link_to "answer一覧画面にもどる", questions_path %>

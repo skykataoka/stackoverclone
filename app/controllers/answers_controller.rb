@@ -14,6 +14,7 @@ class AnswersController < ApplicationController
     #  binding.pry
      @question = @answer.question
 
+
      # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
       if @answer.save
@@ -25,10 +26,16 @@ class AnswersController < ApplicationController
 
 
   def edit
+
   end
 
   def update
-    @answer.update(answers_params)
+    if @answer.save
+    @answer.update(answer_params)
+     redirect_to question_path(@answer.question.id), notice: "回答を更新しました"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -50,5 +57,6 @@ class AnswersController < ApplicationController
 
     def set_answer
       @answer = Answer.find(params[:id])
+
     end
 end
