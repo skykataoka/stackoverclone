@@ -33,7 +33,10 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
-    redirect_to answer_path
+    respond_to do |format|
+      format.js
+      format.html{ render :new }
+    end
   end
 
   def show

@@ -34,6 +34,8 @@
 
 <!-- @answerを取得する　アプリケーションヘルパーを活用-->
 <%# instance_get %>
+<div id="answers_area">
 <%= render partial:'answers/index', locals: {question: @question, answers: @answers} %>
+</div>
 <br>
 <%= render partial:'answers/form', locals: {question: @question, answer: @answer} %>
