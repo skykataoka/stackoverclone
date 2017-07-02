@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <!-- 選択したquestionにお気に入りした人一覧の中に自分が入っていたら -->
   <% if question.favorite_user(current_user.id) %>
-    <%= button_to question_favorite_path(favorite, question_id: question.id), method: :delete, id: "favorite-button", remote: true do %>
+    <%= button_to question_favorite_path(favorite.id, question_id: question.id), method: :delete, id: "favorite-button", remote: true do %>
       <a>お気に入り済み</a>
       <span>
         <%= question.favorites_count %>
