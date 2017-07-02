@@ -126,6 +126,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (2.0.5)
@@ -227,6 +230,7 @@ DEPENDENCIES
   letter_opener_web
   mini_magick
   pg (~> 0.15)
+  pry-byebug
   pry-rails
   rails (= 4.2.6)
   rails_12factor
