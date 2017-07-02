@@ -94,6 +94,21 @@ ActiveRecord::Schema.define(version: 20170628135757) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.integer  "cnt",         default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "votes", ["answer_id"], name: "index_votes_on_answer_id", using: :btree
+  add_index "votes", ["question_id"], name: "index_votes_on_question_id", using: :btree
+  add_index "votes", ["user_id", "answer_id"], name: "index_votes_on_user_id_and_answer_id", unique: true, using: :btree
+  add_index "votes", ["user_id", "question_id"], name: "index_votes_on_user_id_and_question_id", unique: true, using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
+
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
 end
