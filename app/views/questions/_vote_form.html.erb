@@ -1,4 +1,5 @@
 <div id="vote_form">
+  <p>投票数:<%= @question.votes_count %></p>
   <% unless current_user.already_vote(@question.id, "question") %>
     <%= form_for(@question.votes.build) do |f| %>
       <%= f.hidden_field :question_id %>
@@ -13,8 +14,4 @@
       <%= f.submit "評価を取り消す", class: "btn btn-sm btn-default" %>
     <% end %>
   <% end %>
-  <br/>
-  <span>0</span>
-  <br/>
-  <span>▼</span>
 </div>
