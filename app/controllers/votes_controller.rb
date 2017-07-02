@@ -1,11 +1,14 @@
 class VotesController < ApplicationController
   def create
-    if params[target] == "question"
-      target = Question.find(params[question_id])
+    destination = params["vote"]["target"]
+    if destination == "question"
+      target = Question.find(params["vote"]["question_id"])
+      redirect_path = target
     else 
-      target = Answer.find(params[answer_id])
+      # 回答用の処理を記述
     end
-    Vote.add_vote(target.id, current_user.id, params[target])
+    Vote.add_vote(target.id, current_user.id, destination)
+    redirect_to redirect_path
   end
 
   def destroy

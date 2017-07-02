@@ -1,0 +1,13 @@
+<div id="vote_form%>">
+  <% if @vote.nil? %>
+    <%= form_for(@question.votes.build) do |f| %>
+      <%= f.hidden_field :question_id %>
+      <%= f.hidden_field :target, :value => "question" %>
+        <%= f.submit "評価する。", class: "btn btn-sm btn-default" %>
+    <% end %>
+  <% end %>
+  <br/>
+  <span>0</span>
+  <br/>
+  <span>▼</span>
+</div>

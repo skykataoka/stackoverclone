@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   # タグ一覧
   resources :tags, only: [:index]
 
+  # 投票機能
+  resources :votes, only: [:create, :destroy]
+
   root 'top#index'
 
   # letter_openerのルーティング
