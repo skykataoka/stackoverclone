@@ -7,7 +7,6 @@ class FavoritesController < ApplicationController
 
   def destroy
     favorite = Favorite.find_by(user_id: current_user.id, question_id: params[:question_id])
-    binding.pry
     favorite.destroy
     @favorites = Favorite.where(question_id: params[:question_id])
     @Questions = Question.all
