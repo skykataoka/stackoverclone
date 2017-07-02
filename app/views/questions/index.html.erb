@@ -4,25 +4,24 @@
 <div class="index_main">
   <%= button_to '質問する', new_question_path, :class => "btn btn-primary index_main_button", method: :get %>
   <div class="index_main_question">
-  <h1>質問をみる</h1>
-    <br/>
+    <h1>質問をみる</h1>
     <% @questions.each do |question| %>
       <div class="index_main_question_block">
-          <span class="glyphicon glyphicon-arrow-up">投票上ボタン</span>
-          <br/>
-          <span class="glyphicon glyphicon-arrow-down">投票下ボタン
-            <p class="index_main_question_block_content"><%= link_to question.title, question %></p>
-            <div class="tag_area" >
-              <% question.tag_list.each do |tag| %>
-                <span class="label label-info"><%= tag %></span>
-              <% end %>
-            </div>
-          </span>
-          <!-- 作成者の質問の編集と破棄が可能　-->
-          <% if question.user_id == current_user.id %>
-            <p class="clear"><%= link_to 'Edit', edit_question_path(question) %></p>
-            <p class="clear"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <p class="question_title"><%= link_to question.title, question %></p>
+        <div class="tag_area" >
+          tags:
+          <% question.tag_list.each do |tag| %>
+            <span class="label label-info"><%= tag %></span>
           <% end %>
+        </div>
+        <p>投票数:<%= question.votes_count %></p>
+        <!-- 作成者の質問の編集と破棄が可能　-->
+        <% if question.user_id == current_user.id %>
+          <div class="right">
+            <span class="btn btn-success btn-sm"><%= link_to 'Edit', edit_question_path(question) %></span>
+            <span class="btn btn-danger btn-sm"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

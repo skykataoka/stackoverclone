@@ -10,4 +10,10 @@ class Question < ActiveRecord::Base
   #バリデーション
  validates :title, :content, presence: true
 
+  # 質問の評価数を返す
+  def votes_count
+    sum = 0
+    self.votes.each{ |vote| sum += vote.cnt }
+    return sum
+  end
 end
