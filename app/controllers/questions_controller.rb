@@ -72,8 +72,6 @@ class QuestionsController < ApplicationController
   def show
     @answer = @question.answers.build
     @answers = @question.answers
-    # 質問とユーザーの組み合わせで投票を検索し、1件目を取得
-    @vote = Vote.question_between(@question.id, current_user.id)[0]
   end
 
   private

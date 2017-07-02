@@ -2,9 +2,6 @@ class Vote < ActiveRecord::Base
   belongs_to :question
   belongs_to :answer
   belongs_to :user
-  scope :question_between, -> (question_id, user_id) do
-    where("votes.question_id = ? AND votes.user_id = ?", question_id, user_id)
-  end
 
   # 投票メソッド
   def self.add_vote(target_id, user_id, target)
@@ -17,6 +14,7 @@ class Vote < ActiveRecord::Base
     vote.cnt += 1
     vote.save
   end
+
   # 投票取り消しメソッド
   # todo:減算に対応する。
   def self.subtract_vote(target_id)
