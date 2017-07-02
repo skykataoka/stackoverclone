@@ -11,11 +11,8 @@
     <h1><%= @question.title %></h1>
     <br/>
       <div class="index_main_question_block">
-          <span class="glyphicon glyphicon-arrow-up">投票上ボタン</span>
-          <br/>
-          <span class="glyphicon glyphicon-arrow-down">投票下ボタン
-            <p class="index_main_question_block_content"><%= @question.content %>
-          </span>
+          <p class="index_main_question_block_content"><%= @question.content %>
+          <%= render 'vote_form' %>
           <div class="tag_area">
             <% @question.tag_list.each do |tag| %>
               <span class="label label-info"><%= tag %></span>
