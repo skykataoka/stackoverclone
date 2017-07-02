@@ -8,6 +8,7 @@
     <br/>
     <% @questions.each do |question| %>
       <div class="index_main_question_block">
+          <%= render partial: 'favorite', locals: {question: question} %>
           <span class="glyphicon glyphicon-arrow-up">投票上ボタン</span>
           <br/>
           <span class="glyphicon glyphicon-arrow-down">投票下ボタン

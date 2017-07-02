@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170628135757) do
+=======
+ActiveRecord::Schema.define(version: 20170701222414) do
+>>>>>>> 3b1fdd2382f101dd9546c36f63b1025c31d63a11
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +41,10 @@ ActiveRecord::Schema.define(version: 20170628135757) do
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "user_id"
+    t.integer  "favorites_count"
   end
 
   create_table "taggings", force: :cascade do |t|
