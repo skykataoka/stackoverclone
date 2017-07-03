@@ -7,19 +7,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- スマホやタブレットで崩れないようにするために書く-->
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='<%= "#{controller.controller_name}" %>'>
   <header>
    <div>
      <nav class="navbar navbar-default navigation-clean">
          <div class="container">
-             <div class="navbar-header"><a href="#" class="navbar-brand navbar-link">stackoverclone</a>
+             <div class="navbar-header">
+               <%= link_to "stackoverclone", root_path, :class =>"navbar-brand navbar-link" %> </li>
                  <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
              </div>
              <div class="collapse navbar-collapse" id="navcol-1">
                  <ul class="nav navbar-nav navbar-right">
                      <li role="presentation" class="active"><%= link_to "質問", questions_path %></li>
-                     <li role="presentation"><%= link_to "タグ一覧",tags_path %></li>
                      <li role="presentation"><%= link_to "ユーザ一覧", users_path %> </li>
+                     <li role="presentation"><%= link_to "タグ一覧",tags_path %></li>
+                     <form class="navbar-form navbar-left" action="/questions">
+                        <div class="input-group">
+                            <div class="form-group">
+                                <!-- nameで指定した値"user_name"でcontroller側で取得出来る -->
+                                <input type="text" name="tags" class="form-control" placeholder="カンマ区切りで検索">
+                            </div>
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">検索</button>
+                            </span>
+                        </div>
+                     </form>
                       <% if user_signed_in? %>
                         <li class="dropdown"><a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle">マイページ <span class="caret"></span></a>
                            <ul role="menu" class="dropdown-menu">

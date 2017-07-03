@@ -1,12 +1,15 @@
 class QuestionsController < ApplicationController
   #ログインしていなければquestionを使用できないようにする(Deviseのauthenticate_user!メソッドを使用)
   # before_action :authenticate_user!
-  
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    if params['tags'].blank?
+      @questions = Question.all
+    else
+      @questions = Question.tagged_with(params['tags'])
+    end
   end
 
   # GET /questions/1
@@ -65,7 +68,10 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # 回答の入力フォームと一覧を表示するためにインスタンスを2つ生成
   def show
+    @answer = @question.answers.build
+    @answers = @question.answers
   end
 
   private

@@ -1,0 +1,19 @@
+  <ul>
+   <h2>回答一覧</h2>
+    <% answers.each do |answer| %>
+     <% unless answer.id.nil? %>
+
+        <p>回答内容：<%= answer.content%></p>
+        <p>回答者：<%= answer.user.name %>さん</p>
+
+         <!-- 作成者の回答の編集と破棄が可能-->
+        <% if answer.user_id == current_user.id %>
+            <p class="right">
+              <%= link_to '', edit_question_answer_path(question, answer), class: "fa fa-pencil-square-o fa-lg" %>
+              <%= link_to '', question_answer_path(question, answer), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
+            </p>
+          <% end %>
+
+     <% end %>
+    <% end %>
+  </ul>

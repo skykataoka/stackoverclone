@@ -3,31 +3,47 @@ class AnswersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_answer, only: [:edit, :update, :destroy]
 
+  def new
+    @answer = Answer.new
+  end
+
    #回答を保存、投稿するためのアクションです。
-  def create
+     def create
      #質問と紐付ける
      @answer = current_user.answers.build(answer_params)
+    #  binding.pry
      @question = @answer.question
-     # クライアント要求に応じてフォーマットを変更
-     respond_to do |format|
 
-    if @answer.save
-      format.html { render :new }
-     end
-   end
+
+     # クライアント要求に応じてフォーマットを変更
+    respond_to do |format|
+      if @answer.save
+        format.html { redirect_to question_path(@question), notice: '回答を投稿しました' }
+        # format.html { render :new }
+      end
+    end
  end
 
 
   def edit
+
   end
 
   def update
-    @answer.update(answers_params)
+    if @answer.save
+    @answer.update(answer_params)
+     redirect_to question_path(@answer.question.id), notice: "回答を更新しました"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     @answer.destroy
-    redirect_to answer_path
+    respond_to do |format|
+      format.js
+      format.html{ render :new }
+    end
   end
 
   def show
@@ -36,10 +52,11 @@ class AnswersController < ApplicationController
 
   private
     def answer_params
-      params.require(:answer).permit(:question_id, :content)
+      params.require(:answer).permit(:content,:question_id)
     end
 
     def set_answer
       @answer = Answer.find(params[:id])
+
     end
 end
