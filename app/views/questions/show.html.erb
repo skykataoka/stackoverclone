@@ -11,8 +11,17 @@
     <h1><%= @question.title %></h1>
     <br/>
       <div class="index_main_question_block">
+<<<<<<< HEAD
+          <%= render partial: 'favorite', locals: {question: question} %>
+          <span class="glyphicon glyphicon-arrow-up">投票上ボタン</span>
+          <br/>
+          <span class="glyphicon glyphicon-arrow-down">投票下ボタン
+            <p class="index_main_question_block_content"><%= @question.content %>
+          </span>
+=======
           <p class="index_main_question_block_content"><%= @question.content %>
           <%= render 'vote_form' %>
+>>>>>>> 78a615970345365ffcf22e28826096604a630aa1
           <div class="tag_area">
             <% @question.tag_list.each do |tag| %>
               <span class="label label-info"><%= tag %></span>
@@ -31,12 +40,8 @@
 
 <!-- @answerを取得する　アプリケーションヘルパーを活用-->
 <%# instance_get %>
-<h2>回答一覧</h2>
-  <% @answers.each do |answer| %>
-   <% unless answer.id.nil? %>
-      <p>回答内容：<%= answer.content%></p>
-      <p>回答者：<%= answer.user.name %>さん</p>
-   <% end %>
-  <% end %>
+<div id="answers_area">
+<%= render partial:'answers/index', locals: {question: @question, answers: @answers} %>
+</div>
 <br>
 <%= render partial:'answers/form', locals: {question: @question, answer: @answer} %>

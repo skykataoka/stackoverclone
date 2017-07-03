@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #特定の質問に対して回答する
   resources :questions do
       resources :answers
+      resources :favorites, only: [:create, :destroy]
   end
 
   # タグ一覧
