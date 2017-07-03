@@ -6,11 +6,14 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader #deviseの設定配下に追記
 
+  #アソシエーション 
   has_many :favorites, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :votes, dependent: :destroy
 
+  #バリデーション
+  validates :name, presence: true
 
 
   def already_vote(target_id, target)
