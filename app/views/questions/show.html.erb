@@ -10,7 +10,7 @@
   <div class="index_main_question">
     <h1><%= @question.title %></h1>
     <br/>
-      <div class="index_main_question_block">s
+      <div class="index_main_question_block">
           <%= render partial: 'favorite', locals: {question: @question} %>
           <span class="glyphicon glyphicon-arrow-up">投票上ボタン</span>
           <br/>
