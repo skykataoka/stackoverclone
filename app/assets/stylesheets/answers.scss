@@ -1,3 +1,28 @@
 // Place all the styles related to the answers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.answer_index {
+  height: 100%;
+  width: 100%;
+  // padding-left: 10px;
+  // padding-right: 150px;
+  padding-bottom: 50px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border-bottom: solid 1px silver;
+}
+
+.answer_index h3 {
+  padding-left: 10px;
+  border-bottom: solid 1px silver;
+}
+
+.answer_index_content {
+  margin: 20px;
+  font-size: 20px;
+}
+
+.answer_index_name {
+  width: 150px;
+  margin-left: auto;
+}

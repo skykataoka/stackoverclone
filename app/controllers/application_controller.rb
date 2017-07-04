@@ -16,8 +16,6 @@ class ApplicationController < ActionController::Base
     # binding.pry
     devise_parameter_sanitizer.permit(:sign_up, keys: PERMISSIBLE_ATTRIBUTES)
     devise_parameter_sanitizer.permit(:account_update, keys: PERMISSIBLE_ATTRIBUTES)
-    # devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
-    # devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email])
   end
 
 end
