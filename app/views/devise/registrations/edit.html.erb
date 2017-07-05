@@ -40,7 +40,7 @@
   <div class="field">
     <!--プロフィール画像が登録されているかどうかの判定-->
     <% if !current_user.avatar? %>
-      <%= image_tag('no_image.png', :size => "200x200" , alt: @user.name) %>
+      <%= image_tag('no_image.png', :size => "200x200" , alt: "no_image") %>
       <p>プロフィール画像を変更<%= f.file_field :avatar %><p>
       <%= f.hidden_field :avatar_cache %>
     <% else %>
