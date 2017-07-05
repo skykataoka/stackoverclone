@@ -4,7 +4,16 @@
   <% if user_signed_in? %>
     <% if current_user.id == @user.id%>
       <%= link_to "ユーザ情報を編集する", edit_user_registration_path %>
+
     <% end %>
   <% end %>
+  <h3>質問内容一覧</h3>
+    <% @questions.each do |question| %>
+      <%= question.content %><br/>
+    <% end %>
 
+  <h3>回答内容一覧</h3>
+    <% @answers.each do |answer| %>
+      <%= answer.content %><br/>
+    <% end %>
 </div>

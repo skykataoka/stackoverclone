@@ -1,12 +1,16 @@
 <div class="container">
   <h2>ユーザ一覧</h2>
-  <% @users.each do |user| %>
-      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
-        <!-- <%#= profile_img(user) %> -->
-        <%= link_to user_path(user) do %>
-          <h4>ユーザー名：<strong><%= user.email%></strong></h4>
-        <% end %>
-        <p>email:<%= user.email %></p>
-      </div>
-  <% end %>
+    <% @users.each do |user| %>
+     <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+          <% if user.avatar? %>
+            <%= image_tag(user.avatar, :size => "40x40", alt: user.name) %>
+          <% else %>
+            <%= image_tag('no_image.png', :size => "40x40", alt: "no_image") %>
+          <% end %>
+          <%= link_to user_path(user) do %>
+            <h4>ユーザー名：<%= user.name %></h4>
+          <% end %>
+          <p>email:<%= user.email %></p>
+     </div>
+    <% end %>
 </div>
