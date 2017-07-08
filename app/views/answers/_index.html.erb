@@ -16,6 +16,7 @@
                     <%= link_to '', question_answer_path(question, answer), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
                   </p>
               <% end %>
+              <%= render 'vote_form', {target: answer, target_str: "answer" } %>
           <% end %>
       <% end %>
   </div>
