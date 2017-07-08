@@ -8,7 +8,7 @@ class Vote < ActiveRecord::Base
     if target == "question"
       vote = Vote.new(question_id: target_id)
     else
-      # 回答用の処理を記述
+      vote = Vote.new(answer_id: target_id)
     end
     vote.user_id = user_id
     vote.cnt += 1
