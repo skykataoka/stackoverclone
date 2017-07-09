@@ -1,13 +1,12 @@
-<div class= "container">
-  <div class= "wrapper col-md-8 col-md-offset-2 col-sm-10">
-      <h3><%= answers.length-1 %>件の回答</h3>
+<div class="answer_index">
+    <h3><%= answers.length-1  %>件の回答</h3>
       <% answers.each do |answer| %>
           <% unless answer.id.nil? %>
               <div class="answer_index_content"> <%= answer.content%> </div>
               <div class="answer_index_name">
                 <p>回答日時<%= answer.created_at %></p>
                 <%= image_tag(answer.user.avatar, :size => "40x40") %>
-                <%= link_to answer.user.name, "#" %>さん
+                <%= link_to answer.user.name, user_path(answer.user.id) %>さん
               </div>
                <!-- 作成者の回答の編集と破棄が可能-->
               <% if answer.user_id == current_user.id %>
@@ -18,5 +17,4 @@
               <% end %>
           <% end %>
       <% end %>
-  </div>
 </div>
