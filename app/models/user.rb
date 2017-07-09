@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader #deviseの設定配下に追記
 
-  #アソシエーション 
+  #アソシエーション
   has_many :favorites, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   #バリデーション
   validates :name, presence: true
 
+  #スコープ
+  scope :with_favorite, -> { joins(:questions) } 
 
   def already_vote(target_id, target)
     if target == "question"
