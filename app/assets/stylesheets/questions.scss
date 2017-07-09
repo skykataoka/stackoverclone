@@ -9,7 +9,7 @@
   margin: auto;
   height:100%;
   width:100%;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-right: 150px;
   background-color: white;
   padding-bottom: 50px;
@@ -30,6 +30,10 @@
   width:80%;
 }
 
+.index_main_question_name {
+  width: 150px;
+  margin-left: auto;
+}
 
 .index_main_question_block {
   height: auto;
@@ -42,8 +46,8 @@
 }
 
 .index_main_question_block_content{
-  //float: left;
-  margin-left: 200px;
+  float: right;
+  margin-right: 400px;
   font-size: 30px;
 }
 

@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     # ユーザーの質問及び回答一覧を取得
     @questions = @user.questions
     @answers = @user.answers
+    @favorites = @user.favorites
+    # binding.pry
   end
 
 end

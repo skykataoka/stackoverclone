@@ -14,7 +14,9 @@ class Question < ActiveRecord::Base
 
   #バリデーション
   validates :title, :content, presence: true
-  
+
+
+
   # 質問に紐づく投票の評価値の合計を返す。
   def votes_count
     sum = 0

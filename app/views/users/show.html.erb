@@ -1,19 +1,35 @@
 <div class="container">
   <h2>このユーザについて</h2>
-  <p><%= @user.email %></p>
+  <% if @user.avatar? %>
+    <%= image_tag(@user.avatar, :size => "200x100", alt: @user.name) %>
+  <% else %>
+    <%= image_tag('no_image.png', :size => "200x100", alt: "no_image") %>
+  <% end %>
+  <p>ユーザー名：<%= @user.name %>さん</p>
+
   <% if user_signed_in? %>
     <% if current_user.id == @user.id%>
+      <p>メールアドレス：<%= @user.email %></p>
       <%= link_to "ユーザ情報を編集する", edit_user_registration_path %>
-
     <% end %>
   <% end %>
+
+  <!-- これより以下はrenderで読み込むほうがいい-->
   <h3>質問内容一覧</h3>
     <% @questions.each do |question| %>
-      <%= question.content %><br/>
+      <%= link_to(question.content, question_path) %><br/>
     <% end %>
 
   <h3>回答内容一覧</h3>
     <% @answers.each do |answer| %>
-      <%= answer.content %><br/>
+      <%= link_to(answer.content, "#") %><br/>
     <% end %>
+
+  <h3>お気に入りの質問</h3>
+    <p>ここにお気に入りの質問を表示する！</p>
+    <% @favorites.each do |favorite| %>
+      <%#= link_to(favorite.question_id, "#") %><br/>
+    <% end %>
+  <!--  ここまで　-->
+
 </div>

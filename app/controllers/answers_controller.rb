@@ -1,25 +1,21 @@
 class AnswersController < ApplicationController
   #ログインしていなければAnswerを使用できないようにする(Deviseのauthenticate_user!メソッドを使用)
   before_action :authenticate_user!
-  before_action :set_answer, only: [:edit, :update, :destroy]
+  before_action :set_answer, only: [:edit, :update, :destroy, :show]
 
   def new
     @answer = Answer.new
   end
 
    #回答を保存、投稿するためのアクションです。
-     def create
+  def create
      #質問と紐付ける
      @answer = current_user.answers.build(answer_params)
-    #  binding.pry
      @question = @answer.question
-
-
      # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
       if @answer.save
         format.html { redirect_to question_path(@question), notice: '回答を投稿しました' }
-        # format.html { render :new }
       end
     end
  end
