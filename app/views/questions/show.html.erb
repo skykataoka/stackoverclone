@@ -14,15 +14,15 @@
                   <span class="label label-info"><%= tag %></span>
                 <% end %>
               </div>
-                <p class="right">
-
-                   <%= @question.user.name %>さん
+                <p class="index_main_question_name">
+                   <%= image_tag(@question.user.avatar, :size => "40x40") %>
+                   <%= link_to @question.user.name,user_path(@question.user.id) %>さん
                 </p>
               <!-- 作成者の質問の編集と破棄が可能　-->
               <% if @question.user_id == current_user.id %>
                 <p class="clear right">
-                  <%= link_to '編集', edit_question_path(@question) %>
-                  <%= link_to '削除', question_path, method: :delete, data: { confirm: '本当に質問を削除してもよろしいですか?' } %>
+                  <%= link_to '編集', edit_question_path(@question),class: "fa fa-pencil-square-o fa-lg" %>
+                  <%= link_to '削除', question_path, method: :delete, data: { confirm: '本当に質問を削除してもよろしいですか?' },class: "fa fa-trash-o fa-lg" %>
                 </p>
               <% end %>
           </div>
