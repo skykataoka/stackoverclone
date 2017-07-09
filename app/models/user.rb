@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     if target == "question"
       votes.find_by(question_id: target_id)
     else
-      # 回答用の処理を記載
+      votes.find_by(answer_id: target_id)
     end
   end
 end

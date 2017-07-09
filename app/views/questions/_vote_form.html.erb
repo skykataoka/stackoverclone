@@ -1,16 +1,16 @@
 <div id="vote_form">
-  <p>投票数:<%= @question.votes_count %></p>
-  <% unless current_user.already_vote(@question.id, "question") %>
-    <%= form_for(@question.votes.build) do |f| %>
-      <%= f.hidden_field :question_id %>
-      <%= f.hidden_field :target, :value => "question" %>
+  <p>投票数:<%= target.votes_count %></p>
+  <% unless current_user.already_vote(target.id, target_str) %>
+    <%= form_for(target.votes.build) do |f| %>
+      <%= f.hidden_field "#{target_str}_id" %>
+      <%= f.hidden_field :target, :value =>  target_str %>
       <%= f.submit "評価する", class: "btn btn-sm btn-default" %>
     <% end %>
   <% else %>
-    <%= form_for(current_user.already_vote(@question.id, "question"), method: 'delete') do |f| %>
+    <%= form_for(current_user.already_vote(target.id,  target_str), method: 'delete') do |f| %>
       <%= f.hidden_field :id %>
-      <%= f.hidden_field :question_id %>
-      <%= f.hidden_field :target, :value => "question" %>
+      <%= f.hidden_field "#{target_str}_id" %>
+      <%= f.hidden_field :target, :value => target_str %>
       <%= f.submit "評価を取り消す", class: "btn btn-sm btn-default" %>
     <% end %>
   <% end %>

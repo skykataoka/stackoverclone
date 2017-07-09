@@ -23,8 +23,8 @@ class VotesController < ApplicationController
       @target = Question.find(params["vote"]["question_id"])
       @redirect_path = @target
     else 
-      # 回答用の処理を記述
-      # 回答ではリダイレクト先をtargetではなく、紐づく質問を設定
+      @target = Answer.find(params["vote"]["answer_id"])
+      @redirect_path = @target.question
     end
   end
 end
